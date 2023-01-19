@@ -1,3 +1,4 @@
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -48,8 +49,8 @@ export default function Navbar() {
       </Box>
       <Box>
         <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
+          flex={{ base: 1, md: 0 }}
+          justify={"flex-end"}
           direction={"row"}
           spacing={6}
           border={"1px solid black"}
@@ -58,7 +59,7 @@ export default function Navbar() {
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <Text>Free Shipping on Orders $50+Details</Text>
-              <Center>
+              <RouterLink to={'/'}>
                 <Image
                   ml={"300px"}
                   w={"150px"}
@@ -66,7 +67,7 @@ export default function Navbar() {
                   src={style_incore_logo}
                   alt="Dan Abramov"
                 />
-              </Center>
+              </RouterLink>
             </Flex>
           </Flex>
           <Button onClick={toggleColorMode}>
@@ -152,7 +153,8 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
+              <RouterLink 
+                to={navItem.path}
                 p={2}
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
@@ -164,7 +166,7 @@ const DesktopNav = () => {
                 }}
               >
                 {navItem.label}
-              </Link>
+              </RouterLink>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -297,6 +299,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "WOMEN",
+    path: "/women",
     children: [
       {
         label: "Explore Design Work",
@@ -312,6 +315,7 @@ const NAV_ITEMS = [
   },
   {
     label: "MEN",
+    path: "/men",
     children: [
       {
         label: "Job Board",
@@ -327,6 +331,7 @@ const NAV_ITEMS = [
   },
   {
     label: "JEANS",
+    path: "/jeans",
     children: [
       {
         label: "Explore Design Work",
@@ -342,6 +347,7 @@ const NAV_ITEMS = [
   },
   {
     label: "NEW",
+    path: "/new",
     children: [
       {
         label: "Explore Design Work",
@@ -357,6 +363,7 @@ const NAV_ITEMS = [
   },
   {
     label: "SALE",
+    path: "/sale",
     children: [
       {
         label: "Explore Design Work",

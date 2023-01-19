@@ -1,20 +1,27 @@
 import { Text } from "@chakra-ui/react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Community from "./Community";
+import Home from "./Home";
+import Jeans from "./Jeans";
+import Men from "./Men";
+import New from "./New";
+import Sale from "./Sale";
+import Women from "./Women";
 
 const AllRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Text>Welcome to Home Page</Text>} />
-        <Route path="/women" element={<Text>Welcome to Women Page</Text>} />
-        <Route path="/men" element={<Text>Welcome to Men Page</Text>} />
-        <Route path="/jeans" element={<Text>Welcome to Jeans Page</Text>} />
-        <Route path="/new" element={<Text>Welcome to New Page</Text>} />
-        <Route path="/sale" element={<Text>Welcome to Sale Page</Text>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/women" element={<Women />} />
+        <Route path="/men" element={<Men />} />
+        <Route path="/jeans" element={<Jeans />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/sale" element={<Sale />} />
         <Route
           path="/community"
-          element={<Text>Welcome to Community Page</Text>}
+          element={<Community />}
         />
         <Route path="/labels" element={<Text>Welcome to Labels Page</Text>} />
         <Route path="*" element={<Text>ERROR 404: PageNotFound</Text>} />
@@ -24,4 +31,3 @@ const AllRoutes = () => {
 };
 
 export default AllRoutes;
- 
