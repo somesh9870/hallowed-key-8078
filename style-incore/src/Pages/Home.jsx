@@ -1,8 +1,10 @@
 import {
   Box,
+  Button,
   Card,
   Flex,
   Grid,
+  Heading,
   Image,
   Link,
   SimpleGrid,
@@ -85,7 +87,7 @@ const Home = () => {
         </Stack>
       </Flex>
 
-      {/* // 6 images */}
+      {/* // */}
       <Flex borderBottom={"2px solid gray"} p="20px" columns={6} gap={2}>
         <Card>
           <Image
@@ -150,83 +152,88 @@ const Home = () => {
         </Card>
       </Flex>
 
-      {/*  3 cards */}
+      {/*  EXPRESS ICONS */}
+      <Grid p={20}>
+        <Heading as={"h4"} size={"lg"}>
+          EXPRESS ICONS
+        </Heading>
+        <SimpleGrid
+          columns={[1, 1, 2, 3]}
+          p={6}
+          gap={8}
+          // justify='center'
+          // width="80%"
+          // margin={"auto"}
+        >
+          <Box
+            sx={basicBoxStyles}
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03.jpg) center/cover no-repeat"
+          >
+            <Text fontSize={"sm"}>
+              Portofino Shirts <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
 
-      <SimpleGrid
-        columns={[1, 2, 2, 3]}
-        p={6}
-        gap={10}
-        width="80%"
-        margin={"auto"}
-      >
-        <Box
-          sx={basicBoxStyles}
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03.jpg) center/cover no-repeat"
-        >
-          <Text fontSize={"sm"}>
-            Portofino Shirts <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
+          <Box
+            sx={basicBoxStyles}
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-02.jpg) center/cover no-repeat"
+          >
+            <Text fontSize={"sm"}>
+              Body Contour <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
 
-        <Box
-          sx={basicBoxStyles}
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-02.jpg) center/cover no-repeat"
-        >
-          <Text fontSize={"sm"}>
-            Body Contour <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
+          <Box
+            sx={basicBoxStyles}
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-03.jpg) center/cover no-repeat"
+          >
+            <Text fontSize={"sm"}>
+              The Editor Pant <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
+          <Box
+            sx={basicBoxStyles}
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-04.jpg) center/cover no-repeat"
+          >
+            <Text fontSize={"sm"}>
+              1MX Shirts <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
 
-        <Box
-          sx={basicBoxStyles}
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-03.jpg) center/cover no-repeat"
-        >
-          <Text fontSize={"sm"}>
-            The Editor Pant <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
-        <Box
-          sx={basicBoxStyles}
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-04.jpg) center/cover no-repeat"
-        >
-          <Text fontSize={"sm"}>
-            1MX Shirts <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
+          <Box
+            sx={basicBoxStyles}
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-05.jpg) center/cover no-repeat"
+          >
+            <Text fontSize={"sm"}>
+              Modern Tech <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
 
-        <Box
-          sx={basicBoxStyles}
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/0102-new-dt_03-05.jpg) center/cover no-repeat"
-        >
-          <Text fontSize={"sm"}>
-            Modern Tech <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
-
-        <Box
-          sx={basicBoxStyles}
-          x
-          filter="auto"
-          background="url(https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/0106-digital-22985-hp/-dt/sweaters-dt.jpg) center/cover no-repeat "
-        >
-          <Text fontSize={"sm"}>
-            Merino Sweaters <br /> <u>SHOP NOW</u>
-          </Text>
-        </Box>
-      </SimpleGrid>
+          <Box
+            sx={basicBoxStyles}
+            x
+            filter="auto"
+            background="url(https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/0106-digital-22985-hp/-dt/sweaters-dt.jpg) center/cover no-repeat "
+          >
+            <Text fontSize={"sm"}>
+              Merino Sweaters <br /> <u>SHOP NOW</u>
+            </Text>
+          </Box>
+        </SimpleGrid>
+      </Grid>
 
       {/* Community */}
       <Grid mt={"20px"} p={10} bg={"#f5f5f5"}>
-        <Text as={"b"} fontSize={"2xl"}>
+        <Heading as={"h4"} size={"lg"}>
           OUR COMMUNITY
-        </Text>
+        </Heading>
 
-        <SimpleGrid p={8} columns={[2, 2, 4, 4]} gap={8}>
+        <SimpleGrid p={8} columns={[1, 1, 4, 4]} gap={8}>
           <Card>
             <Image
               src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39.jpg"
@@ -282,6 +289,136 @@ const Home = () => {
           </Card>
         </SimpleGrid>
       </Grid>
+
+      {/* Shop the easy way */}
+      <Box boxShadow="md" rounded="md" bg="white" p={16}>
+        <Heading as={"h4"} size="lg">
+          SHOP THE EASY WAY
+        </Heading>
+        <SimpleGrid columns={[2, 2, 4, 4]} p={6} gap={10} margin={"auto"}>
+          <Card alignItems="center">
+            <Image
+              boxSize="50px"
+              objectFit="cover"
+              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/bopis-dt.png"
+              alt="Dan Abramov"
+            />
+            <Text>Store Pickup</Text>
+            <Text>Buy online. Pick it up in store for free.</Text>
+            <Link>LEARN MORE</Link>
+          </Card>
+          <Card alignItems="center">
+            <Image
+              // border={"1px solid black"}
+              // boxSize="50px"
+              height="50px"
+              objectFit="cover"
+              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/klarna-dt.png"
+              alt="Dan Abramov"
+            />
+            <Text>Buy Now. Pay Later.</Text>
+            <Text>4 interest-free payments.</Text>
+            <Link>LEARN MORE</Link>
+          </Card>
+          <Card alignItems="center">
+            <Image
+              boxSize="50px"
+              objectFit="cover"
+              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/cc-dt.png"
+              alt="Dan Abramov"
+            />
+            <Text>Express Credit Card</Text>
+            <Text>Open and use for exclusive perks.</Text>
+            <Link>LEARN MORE</Link>
+          </Card>
+          <Card alignItems="center">
+            <Image
+              boxSize="50px"
+              objectFit="cover"
+              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/chat-dt.png"
+              alt="Dan Abramov"
+            />
+            <Text>Free Style Advice</Text>
+            <Text>Connect with digital stylist.</Text>
+            <Link>CHAT NOW</Link>
+          </Card>
+        </SimpleGrid>
+      </Box>
+
+      <SimpleGrid
+        p={8}
+        columns={[1, 1, 3, 6]}
+        gap={8}
+        mt={10}
+        mb={10}
+        alignItems={"center"}
+        justifyItems="center"
+      >
+        <Box>
+          <Heading mt={10} color="#000000" size={"2xl"} mb={6}>
+            Labels We <br /> Love
+          </Heading>
+          <Button borderRadius={"0px"} border="2px solid black" py={6} px={12}>
+            SEE MORE
+          </Button>
+        </Box>
+        <Box>
+          <Image
+            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_26.jpg"
+            alt="naruto"
+            objectFit="cover"
+            mb={4}
+          />
+          <Heading as={"u"} size="sm">
+            PRE-OWNED LUXURY
+          </Heading>
+        </Box>
+
+        <Box>
+          <Image
+            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_26-08.jpg"
+            alt="naruto"
+            objectFit="cover"
+            mb={4}
+          />
+          <u>
+            <b>ACTIVEWEAR</b>
+          </u>
+        </Box>
+        <Box>
+          <Image
+            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/10-october/1003-digital-18748-hp/-dt/lwl-2-dt.jpg"
+            alt="naruto"
+            objectFit="cover"
+            mb={4}
+          />
+          <u>
+            <b>LEONISA</b>
+          </u>
+        </Box>
+        <Box>
+          <Image
+            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/11-november/20490-hp-new-arrivals/-dt/1118-hp-dt_22.jpg"
+            alt="naruto"
+            objectFit="cover"
+            mb={4}
+          />
+          <u>
+            <b>THOUSAND FELL</b>
+          </u>
+        </Box>
+        <Box>
+          <Image
+            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_26-11.jpg"
+            alt="naruto"
+            objectFit="cover"
+            mb={4}
+          />
+          <u>
+            <b>FOURLAPS</b>
+          </u>
+        </Box>
+      </SimpleGrid>
     </>
   );
 };
