@@ -14,6 +14,9 @@ import {
 import React from "react";
 import MainVideo from "../project_data/MainVideo.webm";
 import { Link as RouterLink } from "react-router-dom";
+import ShopCategory from "../Components/ShopCategory";
+import Community from "../Components/Community";
+import ShopEasyWay from "../Components/ShopEasyWay";
 
 const basicBoxStyles = {
   display: "flex",
@@ -29,17 +32,67 @@ const basicBoxStyles = {
 };
 
 const Home = () => {
+  const categoryData = [
+    {
+      name: "WOMEN'S JEANS",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03.jpg",
+    },
+    {
+      name: "MEN'S SUITS",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-02.jpg",
+    },
+    {
+      name: "WOMEN'S TOPS",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-03.jpg",
+    },
+    {
+      name: "MEN'S SHIRTS",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-04.jpg",
+    },
+    {
+      name: "WOMEN'S DRESSES",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-05.jpg",
+    },
+    {
+      name: "MEN'S JEANS",
+      img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-06.jpg",
+    },
+  ];
+
+  const communityData = [
+    {
+      img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39.jpg",
+      text: "Style. Inspire. Earn.",
+      linkText: " BECOME A STYLE EDITOR",
+    },
+    {
+      img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39-13.jpg",
+      text: "Styling Community Inspo",
+      linkText: "SHOP THE LOOKS",
+    },
+    {
+      img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/0120-digital-22726-community-section-update/tan-dt.jpg",
+      text: "Dream Big With Tan France",
+      linkText: "SUPPORT OUR CAUSE",
+    },
+    {
+      img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39-15.jpg",
+      text: "EXPRESSINSIDER",
+      linkText: "JOIN FOR FREE",
+    },
+  ];
   return (
     <>
       <video loop autoplay="true" preload="auto">
         <source src={MainVideo} type="video/mp4" />
       </video>
+
       <Flex
         justify={"space-around"}
         fontSize="4xl"
         as="b"
         mt={"12px"}
-        p={2}
+        p={6}
         bg="#18181c"
         color="white"
       >
@@ -87,78 +140,21 @@ const Home = () => {
         </Stack>
       </Flex>
 
-      {/* // */}
-      <Flex borderBottom={"2px solid gray"} p="20px" columns={6} gap={2}>
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>WOMEN'S JEANS</b>
-          </u>
-        </Card>
-
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-02.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>MEN'S SUITS</b>
-          </u>
-        </Card>
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-03.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>WOMEN'S TOPS</b>
-          </u>
-        </Card>
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-04.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>MEN'S SHIRTS</b>
-          </u>
-        </Card>
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-05.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>WOMEN'S DRESSES</b>
-          </u>
-        </Card>
-        <Card>
-          <Image
-            src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-06.jpg"
-            alt="naruto"
-            // objectFit="cover"
-          />
-          <u>
-            <b>MEN'S JEANS</b>
-          </u>
-        </Card>
+      {/* shop by category */}
+      <Flex borderBottom={"2px solid gray"} py={70} px={6} columns={6} gap={6}>
+        {categoryData.map((el) => (
+          <ShopCategory img={el.img} name={el.name} />
+        ))}
       </Flex>
 
       {/*  EXPRESS ICONS */}
-      <Grid p={20}>
+      <Grid p={16}>
         <Heading as={"h4"} size={"lg"}>
           EXPRESS ICONS
         </Heading>
         <SimpleGrid
           columns={[1, 1, 2, 3]}
+          mt={6}
           p={6}
           gap={8}
           // justify='center'
@@ -228,70 +224,20 @@ const Home = () => {
       </Grid>
 
       {/* Community */}
-      <Grid mt={"20px"} p={10} bg={"#f5f5f5"}>
+      <Grid mt={6} p={14} bg={"#f5f5f5"}>
         <Heading as={"h4"} size={"lg"}>
           OUR COMMUNITY
         </Heading>
 
         <SimpleGrid p={8} columns={[1, 1, 4, 4]} gap={8}>
-          <Card>
-            <Image
-              src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39.jpg"
-              alt="naruto"
-              // objectFit="cover"
-            />
-            <Text fontWeight={700} mt="10px" fontSize={"xl"}>
-              Style. Inspire. Earn.
-            </Text>
-            <Link as="b" textDecoration={"underline"} mb={"10px"}>
-              BECOME A STYLE EDITOR
-            </Link>
-          </Card>
-
-          <Card>
-            <Image
-              src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39-13.jpg"
-              alt="naruto"
-              // objectFit="cover"
-            />
-            <Text fontWeight={700} mt="10px" fontSize={"xl"}>
-              Styling Community Inspo
-            </Text>
-            <Link as="b" textDecoration={"underline"} mb={"10px"}>
-              SHOP THE LOOKS
-            </Link>
-          </Card>
-          <Card>
-            <Image
-              src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/0120-digital-22726-community-section-update/tan-dt.jpg"
-              alt="naruto"
-              // objectFit="cover"
-            />
-            <Text fontWeight={700} mt="10px" fontSize={"xl"}>
-              Dream Big With Tan France
-            </Text>
-            <Link as="b" textDecoration={"underline"} mb={"10px"}>
-              SUPPORT OUR CAUSE
-            </Link>
-          </Card>
-          <Card>
-            <Image
-              src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20768-wlp/-dt/0102-wlp_39-15.jpg"
-              alt="naruto"
-              // objectFit="cover"
-            />
-            <Text fontWeight={700} mt="10px" fontSize={"xl"}>
-              EXPRESSINSIDER
-            </Text>
-            <Link as="b" textDecoration={"underline"} mb={"10px"}>
-              JOIN FOR FREE
-            </Link>
-          </Card>
+          {communityData.map((el) => (
+            <Community img={el.img} text={el.text} linkText={el.linkText} />
+          ))}
         </SimpleGrid>
       </Grid>
 
       {/* Shop the easy way */}
-      <Box boxShadow="md" rounded="md" bg="white" p={16}>
+      {/* <Box boxShadow="md" rounded="md" bg="white" p={16}>
         <Heading as={"h4"} size="lg">
           SHOP THE EASY WAY
         </Heading>
@@ -343,7 +289,8 @@ const Home = () => {
             <Link>CHAT NOW</Link>
           </Card>
         </SimpleGrid>
-      </Box>
+      </Box> */}
+      <ShopEasyWay />
 
       <SimpleGrid
         p={8}

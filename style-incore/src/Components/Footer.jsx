@@ -78,10 +78,11 @@ const ListHeader = ({ children }) => {
 export default function Footer() {
   return (
     <Box
+      // border={'1px solid black'}
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
       width="100%"
-      p={0}
+      p={8}
       m={0}
     >
       <Container as={Stack} maxW={"6xl"} py={10} width="100%">
@@ -90,6 +91,7 @@ export default function Footer() {
           columns={[1, 3, 5]}
           spacing={8}
           width="100%"
+          mb={10}
         >
           <Stack spacing={4} alignItems="center">
             {/* <Box>
@@ -136,7 +138,7 @@ export default function Footer() {
             </Stack>
           </Stack>
 
-          <Stack align={"flex-start"} alignItems="center">
+          <Stack align={"flex-start"}>
             <Heading size={"m"}>Store Locator</Heading>
             <Text fontSize={"sm"} href={"#"}>
               Find a Store
@@ -169,7 +171,7 @@ export default function Footer() {
               Pay/View Account
             </Text>
           </Stack>
-          <Stack align={"flex-start"} alignItems="center">
+          <Stack align={"flex-start"}>
             <Heading size={"m"}>Gift Cards</Heading>
             <Text fontSize={"sm"} href={"#"}>
               Buy Gift Cards
@@ -193,7 +195,7 @@ export default function Footer() {
               Careers
             </Text>
           </Stack>
-          <Stack align={"flex-start"} alignItems="center">
+          <Stack align={"flex-start"}>
             <Heading size={"m"}>Popular Pages</Heading>
             <Text fontSize={"sm"} href={"#"}>
               Women's Clothing
@@ -252,7 +254,7 @@ export default function Footer() {
             </Text>
           </Stack>
 
-          <Stack align={"flex-start"} alignItems="center">
+          <Stack align={"flex-start"}>
             <Heading size={"m"}>Customer Service</Heading>
             <Text fontSize={"sm"} href={"#"}>
               Contact Us
