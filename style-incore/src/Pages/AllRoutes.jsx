@@ -4,10 +4,12 @@ import { Route, Routes } from "react-router-dom";
 import Community from "./Community";
 import Home from "./Home";
 import Jeans from "./Jeans";
+import Login from "./Login";
 import Men from "./Men";
 import New from "./New";
 import ProductDetails from "./ProductDetails";
 import Sale from "./Sale";
+import Signup from "./Signup";
 import Suits from "./Suits";
 import Women from "./Women";
 
@@ -28,6 +30,8 @@ const AllRoutes = () => {
           element={<Community />}
         />
         <Route path="/labels" element={<Text>Welcome to Labels Page</Text>} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Text>ERROR 404: PageNotFound</Text>} />
       </Routes>
     </div>

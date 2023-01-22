@@ -116,7 +116,7 @@ export default function Navbar() {
             />
           </Flex> */}
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-            <Flex display={{ base: "none", md: "flex" }} ml={10}>
+            <Flex display={{ base: "none", md: "flex" }} alignItems={"center"} >
               <DesktopNav />
             </Flex>
           </Flex>

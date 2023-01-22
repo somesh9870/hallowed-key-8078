@@ -37,20 +37,41 @@ import CardItem from "../Components/CardItem";
 import axios from "axios";
 import NotFound from "../Components/NotFound";
 import Loader from "../Components/Loader";
+import { useSearchParams } from "react-router-dom";
+
+const handleSearchParam = (val = 1) => {
+  let pageNumber = Number(val);
+  if (typeof pageNumber !== "number") {
+    pageNumber = 1;
+  }
+  if (pageNumber <= 0) {
+    pageNumber = 1;
+  }
+  if (!pageNumber) {
+    pageNumber = 1;
+  }
+  return pageNumber;
+};
+
 
 const Suits = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [data, setData] = useState([]);
   const [name, setName] = useState('FULL SUITS')
+  const [searchParam, setSearchParam] = useSearchParams()
+  const init =  handleSearchParam(searchParam.get('page'))
+  const [page, setPage] = useState(init);
+  const [total, setTotal] = useState(0);
 
   const fetchData = async (endPoint) => {
     try {
       endPoint==='dressPants'? setName('DRESS PANTS') : endPoint==='blazers' ? setName('BLAZERS') : setName('FULL SUITS')
       setLoading(true);
-      let res = await axios.get(`http://localhost:8080/${endPoint}`);
+      let res = await axios.get(`http://localhost:8080/${endPoint}?_limit=12`);
       console.log(res.data);
       setData(res.data);
+      setTotal(res.headers["x-total-count"])
       setLoading(false);  
     } catch (error) {
       setErr(true);
@@ -61,6 +82,10 @@ const Suits = () => {
   useEffect(() => {
     fetchData('mens_data');
   }, []);
+
+  useEffect( () => {
+
+  },[])
 
   const labelsData = [
     {

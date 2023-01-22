@@ -22,8 +22,10 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  SearchIcon,
 } from "@chakra-ui/icons";
 import style_incore_logo from "./style_incore_logo.png";
+import Signup from "../Pages/Signup";
 
 export default function Navbarr() {
   const { isOpen, onToggle } = useDisclosure();
@@ -69,7 +71,12 @@ export default function Navbarr() {
           />
         </Flex>
 
-        <Text fontSize={'sm'} color="#000000" display={["none","none","none","block"]} justify={"flex-start"}>
+        <Text
+          fontSize={"sm"}
+          color="#000000"
+          display={["none", "none", "none", "block"]}
+          justify={"flex-start"}
+        >
           Free Shipping on Orders $50+ Details
         </Text>
 
@@ -81,7 +88,7 @@ export default function Navbarr() {
           >
             <RouterLink to={"/"}>
               <Image
-                w={"150px"}
+                w={"200px"}
                 objectFit="cover"
                 src={style_incore_logo}
                 alt="Dan Abramov"
@@ -100,7 +107,15 @@ export default function Navbarr() {
           direction={"row"}
           spacing={6}
         >
-          <Button
+          <IconButton
+            colorScheme="blue"
+            aria-label="Search database"
+            _hover={{
+              bg: "blue.900",
+            }}
+            icon={<SearchIcon />}
+          />
+          {/* <Button
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
@@ -109,20 +124,22 @@ export default function Navbarr() {
             color="#000000"
           >
             Sign In
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button>
+          </Button> */}
+          <RouterLink to={'/signup'}>
+            <Button
+              // display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"pink.400"}
+              href={"#"}
+              _hover={{
+                bg: "pink.500",
+              }}
+            >
+              User
+            </Button>
+          </RouterLink>
         </Stack>
       </Flex>
 

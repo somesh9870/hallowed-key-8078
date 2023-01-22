@@ -89,7 +89,7 @@ const Home = () => {
   ];
   return (
     <>
-      <video loop autoplay="true" preload="auto">
+      <video loop autoPlay="true" preload="auto">
         <source src={MainVideo} type="video/mp4" />
       </video>
 

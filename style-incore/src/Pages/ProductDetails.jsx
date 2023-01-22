@@ -23,7 +23,7 @@ import React from "react";
 const ProductDetails = () => {
   return (
     <>
-      <Heading>Olive Brown Extra Slim Sateen Stretch Suit</Heading>
+      <Heading py={10} px={28} textAlign={'start'} fontWeight={600} size={'lg'} >Olive Brown Extra Slim Sateen Stretch Suit</Heading>
       <Flex>
         {/* <Box>
           <Image
@@ -36,88 +36,23 @@ const ProductDetails = () => {
             <SimpleGrid
               columns={{ base: 1, lg: 2 }}
               spacing={{ base: 8, md: 10 }}
-              py={{ base: 18, md: 24 }}
+              py={{ base: 1, md: 4 }}
             >
-              <Flex>
+              <Flex display={['none','none','none','block']}>
                 <Image
                   rounded={"md"}
                   alt={"product image"}
                   src={
-                    "https://m.media-amazon.com/images/I/51CAE+KjU4L._AC_UL320_.jpg"
+                    "https://images.express.com/is/image/expressfashion/0039_04353871_2885_c100?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon"
                   }
                   objectFit={"contain"}
                   align={"center"}
-                  // w={"100%"}
-                  // h={{ base: "100%", sm: "400px", lg: "500px" }}
+                  w={"100%"}
+                  h={{ base: "100%", sm: "400px", lg: "500px" }}
                 />
               </Flex>
-              <Stack spacing={{ base: 6, md: 10 }}>
-                <Box as={"header"}>
-                  <Heading
-                    lineHeight={1.1}
-                    fontWeight={600}
-                    fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-                  >
-                    Automatic Watch
-                  </Heading>
-                  <Text
-                    color={useColorModeValue("gray.900", "gray.400")}
-                    fontWeight={300}
-                    fontSize={"2xl"}
-                  >
-                    $350.00 USD
-                  </Text>
-                </Box>
-
-                <Stack
-                  spacing={{ base: 4, sm: 6 }}
-                  direction={"column"}
-                  divider={
-                    <StackDivider
-                      borderColor={useColorModeValue("gray.200", "gray.600")}
-                    />
-                  }
-                >
-                  <VStack spacing={{ base: 4, sm: 6 }}>
-                    <Text
-                      color={useColorModeValue("gray.500", "gray.400")}
-                      fontSize={"2xl"}
-                      fontWeight={"300"}
-                    >
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
-                    </Text>
-                    <Text fontSize={"lg"}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Ad aliquid amet at delectus doloribus dolorum expedita
-                      hic, ipsum maxime modi nam officiis porro, quae, quisquam
-                      quos reprehenderit velit? Natus, totam.
-                    </Text>
-                  </VStack>
-                  <Box>
-                    <Text
-                      fontSize={{ base: "16px", lg: "18px" }}
-                      color={useColorModeValue("yellow.500", "yellow.300")}
-                      fontWeight={"500"}
-                      textTransform={"uppercase"}
-                      mb={"4"}
-                    >
-                      Features
-                    </Text>
-
-                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                      <List spacing={2}>
-                        <ListItem>Chronograph</ListItem>
-                        <ListItem>Master Chronometer Certified</ListItem>{" "}
-                        <ListItem>Tachymeter</ListItem>
-                      </List>
-                      <List spacing={2}>
-                        <ListItem>Anti‑magnetic</ListItem>
-                        <ListItem>Chronometer</ListItem>
-                        <ListItem>Small seconds</ListItem>
-                      </List>
-                    </SimpleGrid>
-                  </Box>
+              <Stack  spacing={{ base: 6, md: 10 }}>
+                <Stack p={2} boxShadow={'xl'} spacing={{ base: 4, sm: 6 }} direction={"column"}>
                   <Box>
                     <Text
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -128,52 +63,57 @@ const ProductDetails = () => {
                     >
                       Product Details
                     </Text>
-
-                    <List spacing={2}>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Between lugs:
-                        </Text>{" "}
-                        20 mm
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Bracelet:
-                        </Text>{" "}
-                        leather strap
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Case:
-                        </Text>{" "}
-                        Steel
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Case diameter:
-                        </Text>{" "}
-                        42 mm
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Dial color:
-                        </Text>{" "}
-                        Black
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Crystal:
-                        </Text>{" "}
-                        Domed, scratch‑resistant sapphire crystal with
-                        anti‑reflective treatment inside
-                      </ListItem>
-                      <ListItem>
-                        <Text as={"span"} fontWeight={"bold"}>
-                          Water resistance:
-                        </Text>{" "}
-                        5 bar (50 metres / 167 feet){" "}
-                      </ListItem>
-                    </List>
+                    <Flex>
+                      <Image
+                        src={
+                          "https://images.express.com/is/image/expressfashion/0039_04353871_2885_c100?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon"
+                        }
+                        alt="naruto"
+                        objectFit="contain"
+                        height={"200px"}
+                        // mb={3}
+                      />
+                      <List ml={3} textAlign={"start"} spacing={2}>
+                        <ListItem>product name</ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Bracelet:
+                          </Text>{" "}
+                          leather strap
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Case:
+                          </Text>{" "}
+                          Steel
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Case diameter:
+                          </Text>{" "}
+                          42 mm
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Dial color:
+                          </Text>{" "}
+                          Black
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Crystal:
+                          </Text>{" "}
+                          Domed, scratch‑resistant sapphire crystal with
+                          anti‑reflective treatment inside
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"} fontWeight={"bold"}>
+                            Water resistance:
+                          </Text>{" "}
+                          5 bar (50 metres / 167 feet){" "}
+                        </ListItem>
+                      </List>
+                    </Flex>
                   </Box>
                 </Stack>
 
@@ -207,6 +147,7 @@ const ProductDetails = () => {
           </Container>
         </Box>
       </Flex>
+
     </>
   );
 };
