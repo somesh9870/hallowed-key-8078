@@ -14,11 +14,11 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-const ShopCategory = ({ img, name }) => {
+const ShopCategory = ({ img, name, redName }) => {
   return (
     <>
-      <RouterLink to={`/${name.toLowerCase()}`}>
-        <Card color="#000000">
+      <RouterLink to={`/${redName}`}>
+        <Box color="#000000">
           <Image
             src={img}
             alt="naruto"
@@ -29,7 +29,7 @@ const ShopCategory = ({ img, name }) => {
           <Text fontWeight={700} textDecoration="underline" letterSpacing={1}>
             {name}
           </Text>
-        </Card>
+        </Box>
       </RouterLink>
     </>
   );

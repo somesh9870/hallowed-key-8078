@@ -88,7 +88,7 @@ export default function Footer() {
       <Container as={Stack} maxW={"6xl"} py={10} width="100%">
         <SimpleGrid
           //   templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
-          columns={[1, 3, 5]}
+          columns={[1, 1, 5]}
           spacing={8}
           width="100%"
           mb={10}

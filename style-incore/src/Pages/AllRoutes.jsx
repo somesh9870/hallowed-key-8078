@@ -6,6 +6,7 @@ import Home from "./Home";
 import Jeans from "./Jeans";
 import Men from "./Men";
 import New from "./New";
+import ProductDetails from "./ProductDetails";
 import Sale from "./Sale";
 import Suits from "./Suits";
 import Women from "./Women";
@@ -21,6 +22,7 @@ const AllRoutes = () => {
         <Route path="/new" element={<New />} />
         <Route path="/sale" element={<Sale />} />
         <Route path="/suits" element={<Suits />} />
+        <Route path="/details" element={<ProductDetails />} />
         <Route
           path="/community"
           element={<Community />}
