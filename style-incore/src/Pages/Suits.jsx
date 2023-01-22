@@ -15,7 +15,7 @@ import {
   Container,
   Grid,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ShopCategory from "../Components/ShopCategory";
 import {
   Breadcrumb,
@@ -32,10 +32,32 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import Truncate from "react-truncate";
-import ItemCard from "../Components/ItemCard";
-
+import CardItem from "../Components/CardItem";
+import axios from "axios";
+import NotFound from "../Components/NotFound";
 
 const Suits = () => {
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(false);
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      let res = await axios.get("http://localhost:8080/mens_data");
+      console.log(res.data);
+      setData(res.data);
+      setLoading(false);
+    } catch (error) {
+      setErr(true);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const labelsData = [
     {
       name: " ",
@@ -55,8 +77,12 @@ const Suits = () => {
     },
   ];
 
-  return (
-    < >
+  return loading ? (
+    <h1>...Loading</h1>
+  ) : err ? (
+    <NotFound />
+  ) : (
+    <>
       <SimpleGrid columns={[1, 1, 2, 5]} gap={6}>
         <Card
           textAlign={"center"}
@@ -81,8 +107,8 @@ const Suits = () => {
         ))}
       </SimpleGrid>
 
-      <Flex columns={[1, 1, 1, 2]} border="1px solid black">
-        <Box p={10} width='40%' border="1px solid yellow">
+      <Flex columns={[1, 1, 1, 2]}>
+        <Box p={10} width="40%">
           {/* BREADCRUMB */}
           <Breadcrumb fontSize={12}>
             <BreadcrumbItem>
@@ -229,26 +255,43 @@ const Suits = () => {
           </Accordion>
         </Box>
 
-        <Box p={10}  width='100%' border="1px solid red">
-          <Flex justify={"space-between"} alignItems="center">
-            <Heading size={"sm"} as="b">
-              MEN'S FULL SUITS
-            </Heading>
+        <Box p={10} width="100%">
+          <Flex
+            p={2}
+            borderBottom={"1px solid grey"}
+            justify={"space-between"}
+            alignItems="center"
+            mb={6}
+          >
+            <Heading size={"lg"}>MEN'S FULL SUITS</Heading>
 
-            <HStack>
-              <Text fontSize={"12px"}>Sort By:</Text>
-              <Select placeholder="Select option">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <Box display={"flex"}>
+              <Text py={2} fontSize={"12px"}>
+                Sort
+              </Text>
+              <Text p={2} fontSize={"12px"}>
+                By:
+              </Text>
+              <Select placeholder="Relevance">
+                <option value="option1">Price Low to High</option>
+                <option value="option2">Price High to Low</option>
+                <option value="option3">New Arrivals</option>
               </Select>
-            </HStack>
+            </Box>
           </Flex>
 
-          <SimpleGrid columns={[1,1,2,3]} >
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
+          <SimpleGrid columns={[1, 1, 2, 3]} gap={6}>
+            {data.map((el) => (
+              <CardItem
+                img={el.img}
+                brand={el.brand}
+                title={el.title}
+                rating={el.rating}
+                reviews={el.reviews}
+                price={el.price}
+                markedPrice={el.markedPrice}
+              />
+            ))}
           </SimpleGrid>
         </Box>
       </Flex>
