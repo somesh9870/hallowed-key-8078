@@ -36,26 +36,32 @@ const Home = () => {
     {
       name: "WOMEN'S JEANS",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03.jpg",
+      redName: "jeans",
     },
     {
       name: "MEN'S SUITS",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-02.jpg",
+      redName: "suits",
     },
     {
       name: "WOMEN'S TOPS",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-03.jpg",
+      redName: "women",
     },
     {
       name: "MEN'S SHIRTS",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-04.jpg",
+      redName: "men",
     },
     {
       name: "WOMEN'S DRESSES",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-05.jpg",
+      redName: "women",
     },
     {
       name: "MEN'S JEANS",
       img: "https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1228-digital-20769-hp/-dt/1228-DIGITAL-20769-hp_03-06.jpg",
+      redName: "jeans",
     },
   ];
 
@@ -141,14 +147,14 @@ const Home = () => {
       </Flex>
 
       {/* shop by category */}
-      <Flex borderBottom={"2px solid gray"} py={70} px={6} columns={6} gap={6}>
+      <SimpleGrid alignItems={'center'} columns={[2,2,2,6]} borderBottom={"2px solid gray"} py={70} px={6} gap={6}>
         {categoryData.map((el) => (
-          <ShopCategory img={el.img} name={el.name} />
+          <ShopCategory img={el.img} name={el.name} redName={el.redName} />
         ))}
-      </Flex>
+      </SimpleGrid>
 
       {/*  EXPRESS ICONS */}
-      <Grid p={16}>
+      <Grid py={16}>
         <Heading as={"h4"} size={"lg"}>
           EXPRESS ICONS
         </Heading>
@@ -157,9 +163,9 @@ const Home = () => {
           mt={6}
           p={6}
           gap={8}
-          // justify='center'
-          // width="80%"
-          // margin={"auto"}
+          justify='{center}'
+          // width="100%"
+          margin={"auto"}
         >
           <Box
             sx={basicBoxStyles}
@@ -236,60 +242,7 @@ const Home = () => {
         </SimpleGrid>
       </Grid>
 
-      {/* Shop the easy way */}
-      {/* <Box boxShadow="md" rounded="md" bg="white" p={16}>
-        <Heading as={"h4"} size="lg">
-          SHOP THE EASY WAY
-        </Heading>
-        <SimpleGrid columns={[2, 2, 4, 4]} p={6} gap={10} margin={"auto"}>
-          <Card alignItems="center">
-            <Image
-              boxSize="50px"
-              objectFit="cover"
-              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/bopis-dt.png"
-              alt="Dan Abramov"
-            />
-            <Text>Store Pickup</Text>
-            <Text>Buy online. Pick it up in store for free.</Text>
-            <Link>LEARN MORE</Link>
-          </Card>
-          <Card alignItems="center">
-            <Image
-              // border={"1px solid black"}
-              // boxSize="50px"
-              height="50px"
-              objectFit="cover"
-              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/klarna-dt.png"
-              alt="Dan Abramov"
-            />
-            <Text>Buy Now. Pay Later.</Text>
-            <Text>4 interest-free payments.</Text>
-            <Link>LEARN MORE</Link>
-          </Card>
-          <Card alignItems="center">
-            <Image
-              boxSize="50px"
-              objectFit="cover"
-              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/cc-dt.png"
-              alt="Dan Abramov"
-            />
-            <Text>Express Credit Card</Text>
-            <Text>Open and use for exclusive perks.</Text>
-            <Link>LEARN MORE</Link>
-          </Card>
-          <Card alignItems="center">
-            <Image
-              boxSize="50px"
-              objectFit="cover"
-              src="https://www.express.com/content/dam/express/2022/projects/web/home-landing/12-december/1215-digital-22583-hp-revert/chat-dt.png"
-              alt="Dan Abramov"
-            />
-            <Text>Free Style Advice</Text>
-            <Text>Connect with digital stylist.</Text>
-            <Link>CHAT NOW</Link>
-          </Card>
-        </SimpleGrid>
-      </Box> */}
+      
       <ShopEasyWay />
 
       <SimpleGrid

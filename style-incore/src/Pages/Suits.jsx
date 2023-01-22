@@ -14,6 +14,7 @@ import {
   Heading,
   Container,
   Grid,
+  Spinner,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ShopCategory from "../Components/ShopCategory";
@@ -35,19 +36,22 @@ import Truncate from "react-truncate";
 import CardItem from "../Components/CardItem";
 import axios from "axios";
 import NotFound from "../Components/NotFound";
+import Loader from "../Components/Loader";
 
 const Suits = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [data, setData] = useState([]);
+  const [name, setName] = useState('FULL SUITS')
 
-  const fetchData = async () => {
+  const fetchData = async (endPoint) => {
     try {
+      endPoint==='dressPants'? setName('DRESS PANTS') : endPoint==='blazers' ? setName('BLAZERS') : setName('FULL SUITS')
       setLoading(true);
-      let res = await axios.get("http://localhost:8080/mens_data");
+      let res = await axios.get(`http://localhost:8080/${endPoint}`);
       console.log(res.data);
       setData(res.data);
-      setLoading(false);
+      setLoading(false);  
     } catch (error) {
       setErr(true);
       setLoading(false);
@@ -55,7 +59,7 @@ const Suits = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData('mens_data');
   }, []);
 
   const labelsData = [
@@ -78,7 +82,7 @@ const Suits = () => {
   ];
 
   return loading ? (
-    <h1>...Loading</h1>
+    <Loader />
   ) : err ? (
     <NotFound />
   ) : (
@@ -148,16 +152,16 @@ const Suits = () => {
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <List textAlign={"start"}>
-                      <ListItem>All Suits & Suit Separates</ListItem>
+                    <List textAlign={"start"} cursor={'pointer'} >
+                      <ListItem >All Suits & Suit Separates</ListItem>
                       <ListItem fontWeight={700}>Full Suits</ListItem>
-                      <ListItem>Suit Jackets & Blazers</ListItem>
-                      <ListItem>Dress Pants</ListItem>
-                      <ListItem>Extra Slim Suit Separates</ListItem>
-                      <ListItem>Slim Suit Separates</ListItem>
-                      <ListItem>Classic Suit Separates</ListItem>
-                      <ListItem>Icons: Modern Tech Suits</ListItem>
-                      <ListItem>Mix & Match Suits</ListItem>
+                      <ListItem onClick={() => fetchData('blazers')}>Suit Jackets & Blazers</ListItem>
+                      <ListItem onClick={() => fetchData('dressPants')}>Dress Pants</ListItem>
+                      <ListItem onClick={() => fetchData('mens_data')}>Extra Slim Suit Separates</ListItem>
+                      <ListItem onClick={() => fetchData('blazers')}>Slim Suit Separates</ListItem>
+                      <ListItem onClick={() => fetchData('classicSuit')}>Classic Suit Separates</ListItem>
+                      <ListItem onClick={() => fetchData('mens_data')}>Icons: Modern Tech Suits</ListItem>
+                      <ListItem onClick={() => fetchData('blazers')}>Mix & Match Suits</ListItem>
                       <ListItem>Wedding</ListItem>
                       <ListItem>Tuxedos</ListItem>
                     </List>
@@ -263,7 +267,7 @@ const Suits = () => {
             alignItems="center"
             mb={6}
           >
-            <Heading size={"lg"}>MEN'S FULL SUITS</Heading>
+            <Heading size={"lg"}>{`MEN'S ${name}`}</Heading>
 
             <Box display={"flex"}>
               <Text py={2} fontSize={"12px"}>

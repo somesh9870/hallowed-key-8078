@@ -18,26 +18,32 @@ const Men = () => {
     {
       name: "JEANS",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/cat-1-dt.jpg",
+      redName: "jeans",
     },
     {
       name: "SUITS",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/cat-2-dt.jpg",
+      redName: "suits",
     },
     {
       name: "SHIRTS",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/cat-3-dt.jpg",
+      redName: "men",
     },
     {
       name: "SWEATERS",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/cat-4-dt.jpg",
+      redName: "sweaters",
     },
     {
       name: "OUTERWEAR",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/lwl-5-dt.jpg",
+      redName: "outwear",
     },
     {
       name: "POLOS",
       img: "https://www.express.com/content/dam/express/2023/projects/web/home-landing/01-january/1227-digital-20770-mlp/-dt/lwl-6-dt.jpg",
+      redName: "polos",
     },
   ];
 
@@ -114,7 +120,7 @@ const Men = () => {
         </Heading>
         <SimpleGrid p={10} columns={[1,3,3,6]} gap={2}>
           {data.map((el) => (
-            <ShopCategory img={el.img} name={el.name} />
+            <ShopCategory img={el.img} name={el.name} redName={el.redName} />
           ))}
         </SimpleGrid>
       </Grid>

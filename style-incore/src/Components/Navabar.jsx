@@ -34,20 +34,8 @@ export default function Navbar() {
 
   return (
     <>
-      <Box display="flex" p={2} bg="black" color={"white"} alignItems="center">
-        <Text as="b" fontSize="15px">
-          APP EXCLUSIVE | $100 off $250 | $200 off $500 | Code: 1176{" "}
-          <Link color="teal.500" href="#" fontSize="14px" ml={1} mr={1}>
-            {" "}
-            Exclusion & Details{" "}
-          </Link>
-          <Link color="teal.500" href="#" fontSize="14px">
-            {" "}
-            DOWNLOAD THE APP SHOP NOW
-          </Link>
-        </Text>
-      </Box>
-      <Box>
+      
+      {/* <Box>
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
@@ -96,7 +84,7 @@ export default function Navbar() {
             Sign Up
           </Button>
         </Stack>
-      </Box>
+      </Box> */}
       <Box>
         <Flex
           bg={useColorModeValue("white", "gray.800")}
@@ -109,7 +97,7 @@ export default function Navbar() {
           borderColor={useColorModeValue("gray.200", "gray.900")}
           align={"center"}
         >
-          <Flex
+          {/* <Flex
             flex={{ base: 1, md: "auto" }}
             ml={{ base: -2 }}
             display={{ base: "flex", md: "none" }}
@@ -126,7 +114,7 @@ export default function Navbar() {
               variant={"ghost"}
               aria-label={"Toggle Navigation"}
             />
-          </Flex>
+          </Flex> */}
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
@@ -134,9 +122,9 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        <Collapse in={isOpen} animateOpacity>
+        {/* <Collapse in={isOpen} animateOpacity>
           <MobileNav />
-        </Collapse>
+        </Collapse> */}
       </Box>
     </>
   );
@@ -229,72 +217,72 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   );
 };
 
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
-  );
-};
+// const MobileNav = () => {
+//   return (
+//     <Stack
+//       bg={useColorModeValue("white", "gray.800")}
+//       p={4}
+//       display={{ md: "none" }}
+//     >
+//       {NAV_ITEMS.map((navItem) => (
+//         <MobileNavItem key={navItem.label} {...navItem} />
+//       ))}
+//     </Stack>
+//   );
+// };
 
-const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
+// const MobileNavItem = ({ label, children, href }) => {
+//   const { isOpen, onToggle } = useDisclosure();
 
-  return (
-    <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        href={href ?? "#"}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+//   return (
+//     <Stack spacing={4} onClick={children && onToggle}>
+//       <Flex
+//         py={2}
+//         as={Link}
+//         href={href ?? "#"}
+//         justify={"space-between"}
+//         align={"center"}
+//         _hover={{
+//           textDecoration: "none",
+//         }}
+//       >
+//         <Text
+//           fontWeight={600}
+//           color={useColorModeValue("gray.600", "gray.200")}
+//         >
+//           {label}
+//         </Text>
+//         {children && (
+//           <Icon
+//             as={ChevronDownIcon}
+//             transition={"all .25s ease-in-out"}
+//             transform={isOpen ? "rotate(180deg)" : ""}
+//             w={6}
+//             h={6}
+//           />
+//         )}
+//       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
-    </Stack>
-  );
-};
+//       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+//         <Stack
+//           mt={2}
+//           pl={4}
+//           borderLeft={1}
+//           borderStyle={"solid"}
+//           borderColor={useColorModeValue("gray.200", "gray.700")}
+//           align={"start"}
+//         >
+//           {children &&
+//             children.map((child) => (
+//               <Link key={child.label} py={2} href={child.href}>
+//                 {child.label}
+//               </Link>
+//             ))}
+//         </Stack>
+//       </Collapse>
+//     </Stack>
+//   );
+// };
 
 const NAV_ITEMS = [
   {

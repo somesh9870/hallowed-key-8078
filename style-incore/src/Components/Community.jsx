@@ -1,11 +1,11 @@
-import { Card, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Card, Image, Link, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Community = ({img, text, linkText}) => {
   return (
     <>
       {" "}
-      <Card>
+      <Box>
         <Image
           src={img}
           alt="naruto"
@@ -17,7 +17,7 @@ const Community = ({img, text, linkText}) => {
         <Link as="b" textDecoration={"underline"} mb={"10px"} color="#000000">
           {linkText}
         </Link>
-      </Card>
+      </Box>
     </>
   );
 };
