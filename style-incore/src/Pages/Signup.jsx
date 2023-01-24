@@ -12,14 +12,13 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
-  Toast,
   useToast,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import ToastEx from "../Components/ToastEx";
 
 // let initVal = {
 //   email: "",
@@ -31,7 +30,7 @@ export default function Signup() {
 
   const [email, setEmail] = useState("eve.holt@reqres.in");
   const [password, setPassword] = useState("pistol");
-  const toast = useToast()
+  const toast = useToast();
 
   //   const handleInput = (e) => {
   //     const { name, value } = e.target;
@@ -49,6 +48,14 @@ export default function Signup() {
       });
       console.log(res.data);
 
+      // return (toast = (
+      //   <ToastEx
+      //     title={"Account Created"}
+      //     message={"We've created your account for you."}
+      //     status={"success"}
+      //   />
+      // ));
+
       return toast({
         title: "Account created.",
         description: "We've created your account for you.",
@@ -65,6 +72,13 @@ export default function Signup() {
         duration: 9000,
         isClosable: true,
       });
+      // return (
+      //   <ToastEx
+      //     title={"Failed"}
+      //     message={"Wrong username or password"}
+      //     status={"error"}
+      //   />
+      // );
     }
   };
 

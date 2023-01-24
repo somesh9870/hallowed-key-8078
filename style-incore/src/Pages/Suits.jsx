@@ -38,6 +38,7 @@ import axios from "axios";
 import NotFound from "../Components/NotFound";
 import Loader from "../Components/Loader";
 import { useSearchParams } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 const handleSearchParam = (val = 1) => {
   let pageNumber = Number(val);
@@ -53,40 +54,49 @@ const handleSearchParam = (val = 1) => {
   return pageNumber;
 };
 
-
 const Suits = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [data, setData] = useState([]);
-  const [name, setName] = useState('FULL SUITS')
-  const [searchParam, setSearchParam] = useSearchParams()
-  const init =  handleSearchParam(searchParam.get('page'))
+  const [name, setName] = useState("FULL SUITS");
+  const [searchParam, setSearchParam] = useSearchParams();
+  const init = handleSearchParam(searchParam.get("page"));
   const [page, setPage] = useState(init);
   const [total, setTotal] = useState(0);
   //  dkjhkljfdsh
 
   const fetchData = async (endPoint) => {
+    localStorage.setItem("endPoint", JSON.stringify(endPoint));
     try {
-      endPoint==='dressPants'? setName('DRESS PANTS') : endPoint==='blazers' ? setName('BLAZERS') : setName('FULL SUITS')
+      endPoint === "dressPants"
+        ? setName("DRESS PANTS")
+        : endPoint === "blazers"
+        ? setName("BLAZERS")
+        : setName("FULL SUITS");
       setLoading(true);
-      let res = await axios.get(`http://localhost:8080/${endPoint}?_limit=12`);
+      let res = await axios.get(
+        `https://mock-server-dqmr.onrender.com/${endPoint}?_limit=12&_sort=price&_order=desc`
+      );
       console.log(res.data);
       setData(res.data);
-      setTotal(res.headers["x-total-count"])
-      setLoading(false);  
+      setTotal(res.headers["x-total-count"]);
+      setLoading(false);
     } catch (error) {
       setErr(true);
       setLoading(false);
     }
   };
 
+  const handleSorting = (e) => {
+    console.log(e.target.value)
+    fetchData()
+  }
+
   useEffect(() => {
-    fetchData('mens_data');
+    fetchData("mens_data");
   }, []);
 
-  useEffect( () => {
-
-  },[])
+  useEffect(() => {}, []);
 
   const labelsData = [
     {
@@ -178,16 +188,30 @@ const Suits = () => {
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <List textAlign={"start"} cursor={'pointer'} >
-                      <ListItem >All Suits & Suit Separates</ListItem>
+                    <List textAlign={"start"} cursor={"pointer"}>
+                      <ListItem>All Suits & Suit Separates</ListItem>
                       <ListItem fontWeight={700}>Full Suits</ListItem>
-                      <ListItem onClick={() => fetchData('blazers')}>Suit Jackets & Blazers</ListItem>
-                      <ListItem onClick={() => fetchData('dressPants')}>Dress Pants</ListItem>
-                      <ListItem onClick={() => fetchData('mens_data')}>Extra Slim Suit Separates</ListItem>
-                      <ListItem onClick={() => fetchData('blazers')}>Slim Suit Separates</ListItem>
-                      <ListItem onClick={() => fetchData('classicSuit')}>Classic Suit Separates</ListItem>
-                      <ListItem onClick={() => fetchData('mens_data')}>Icons: Modern Tech Suits</ListItem>
-                      <ListItem onClick={() => fetchData('blazers')}>Mix & Match Suits</ListItem>
+                      <ListItem onClick={() => fetchData("blazers")}>
+                        Suit Jackets & Blazers
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("dressPants")}>
+                        Dress Pants
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("mens_data")}>
+                        Extra Slim Suit Separates
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("blazers")}>
+                        Slim Suit Separates
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("classicSuit")}>
+                        Classic Suit Separates
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("mens_data")}>
+                        Icons: Modern Tech Suits
+                      </ListItem>
+                      <ListItem onClick={() => fetchData("blazers")}>
+                        Mix & Match Suits
+                      </ListItem>
                       <ListItem>Wedding</ListItem>
                       <ListItem>Tuxedos</ListItem>
                     </List>
@@ -302,25 +326,27 @@ const Suits = () => {
               <Text p={2} fontSize={"12px"}>
                 By:
               </Text>
-              <Select placeholder="Relevance">
-                <option value="option1">Price Low to High</option>
-                <option value="option2">Price High to Low</option>
-                <option value="option3">New Arrivals</option>
+              <Select placeholder="Relevance" onChange={(e) =>handleSorting(e)}>
+                <option value="lth">Price Low to High</option>
+                <option value="htl">Price High to Low</option>
+                <option value="arrivals">New Arrivals</option>
               </Select>
             </Box>
           </Flex>
 
           <SimpleGrid columns={[1, 1, 2, 3]} gap={6}>
             {data.map((el) => (
-              <CardItem
-                img={el.img}
-                brand={el.brand}
-                title={el.title}
-                rating={el.rating}
-                reviews={el.reviews}
-                price={el.price}
-                markedPrice={el.markedPrice}
-              />
+              <RouterLink to={`/suits/${el.id}`}>
+                <CardItem
+                  img={el.img}
+                  brand={el.brand}
+                  title={el.title}
+                  rating={el.rating}
+                  reviews={el.reviews}
+                  price={el.price}
+                  markedPrice={el.markedPrice}
+                />
+              </RouterLink>
             ))}
           </SimpleGrid>
         </Box>

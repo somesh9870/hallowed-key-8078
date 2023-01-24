@@ -18,12 +18,43 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link as RouterLink } from "react-router-dom";
 
 const ProductDetails = () => {
+  let params = useParams();
+  const [data, setData] = useState({});
+
+  let endPoint = JSON.parse(localStorage.getItem("endPoint"));
+
+  const fetchProductDetails = async (id) => {
+    let res = await axios.get(
+      `https://mock-server-dqmr.onrender.com/${endPoint}/${id}`
+    );
+
+    setData(res.data);
+  };
+
+  useEffect(() => {
+    fetchProductDetails(params.user_id);
+  }, []);
+
+  console.log(data);
+
   return (
     <>
-      <Heading py={10} px={28} textAlign={'start'} fontWeight={600} size={'lg'} >Olive Brown Extra Slim Sateen Stretch Suit</Heading>
+      <Heading
+        py={10}
+        px={28}
+        textAlign={"center"}
+        fontWeight={600}
+        size={"lg"}
+      >
+        Olive Brown Extra Slim Sateen Stretch Suit
+      </Heading>
       <Flex>
         {/* <Box>
           <Image
@@ -31,28 +62,31 @@ const ProductDetails = () => {
             alt={"error"}
           />
         </Box> */}
-        <Box>
+        <Box margin={"auto"}>
           <Container maxW={"7xl"}>
             <SimpleGrid
               columns={{ base: 1, lg: 2 }}
               spacing={{ base: 8, md: 10 }}
               py={{ base: 1, md: 4 }}
             >
-              <Flex display={['none','none','none','block']}>
+              <Flex display={["none", "none", "none", "block"]}>
                 <Image
                   rounded={"md"}
                   alt={"product image"}
-                  src={
-                    "https://images.express.com/is/image/expressfashion/0039_04353871_2885_c100?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon"
-                  }
+                  src={data.img}
                   objectFit={"contain"}
-                  align={"center"}
+                  // align={"center"}
                   w={"100%"}
                   h={{ base: "100%", sm: "400px", lg: "500px" }}
                 />
               </Flex>
-              <Stack  spacing={{ base: 6, md: 10 }}>
-                <Stack p={2} boxShadow={'xl'} spacing={{ base: 4, sm: 6 }} direction={"column"}>
+              <Stack spacing={{ base: 6, md: 10 }}>
+                <Stack
+                  p={2}
+                  boxShadow={"xl"}
+                  spacing={{ base: 4, sm: 6 }}
+                  direction={"column"}
+                >
                   <Box>
                     <Text
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -65,74 +99,54 @@ const ProductDetails = () => {
                     </Text>
                     <Flex>
                       <Image
-                        src={
-                          "https://images.express.com/is/image/expressfashion/0039_04353871_2885_c100?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon"
-                        }
+                        src={data.img}
                         alt="naruto"
                         objectFit="contain"
                         height={"200px"}
                         // mb={3}
+                        px={4}
                       />
                       <List ml={3} textAlign={"start"} spacing={2}>
-                        <ListItem>product name</ListItem>
+                        <ListItem>{data.title}</ListItem>
                         <ListItem>
-                          <Text as={"span"} fontWeight={"bold"}>
-                            Bracelet:
+                          {" "}
+                          <Text textDecoration={"line-through"} as={"span"}>
+                            ₹{data.markedPrice}
                           </Text>{" "}
-                          leather strap
+                          ₹{data.price} {data.save}
+                        </ListItem>
+                        <ListItem>
+                          <Text as={"span"}>NEW</Text>{" "}
                         </ListItem>
                         <ListItem>
                           <Text as={"span"} fontWeight={"bold"}>
-                            Case:
+                            Brand:
                           </Text>{" "}
-                          Steel
-                        </ListItem>
-                        <ListItem>
-                          <Text as={"span"} fontWeight={"bold"}>
-                            Case diameter:
-                          </Text>{" "}
-                          42 mm
-                        </ListItem>
-                        <ListItem>
-                          <Text as={"span"} fontWeight={"bold"}>
-                            Dial color:
-                          </Text>{" "}
-                          Black
-                        </ListItem>
-                        <ListItem>
-                          <Text as={"span"} fontWeight={"bold"}>
-                            Crystal:
-                          </Text>{" "}
-                          Domed, scratch‑resistant sapphire crystal with
-                          anti‑reflective treatment inside
-                        </ListItem>
-                        <ListItem>
-                          <Text as={"span"} fontWeight={"bold"}>
-                            Water resistance:
-                          </Text>{" "}
-                          5 bar (50 metres / 167 feet){" "}
+                          {data.brand}
                         </ListItem>
                       </List>
                     </Flex>
                   </Box>
                 </Stack>
 
-                <Button
-                  rounded={"none"}
-                  w={"full"}
-                  mt={8}
-                  size={"lg"}
-                  py={"7"}
-                  bg={useColorModeValue("gray.900", "gray.50")}
-                  color={useColorModeValue("white", "gray.900")}
-                  textTransform={"uppercase"}
-                  _hover={{
-                    transform: "translateY(2px)",
-                    boxShadow: "lg",
-                  }}
-                >
-                  Add to cart
-                </Button>
+                <RouterLink>
+                  <Button
+                    rounded={"none"}
+                    w={"full"}
+                    mt={8}
+                    size={"lg"}
+                    py={"7"}
+                    bg={useColorModeValue("gray.900", "gray.50")}
+                    color={useColorModeValue("white", "gray.900")}
+                    textTransform={"uppercase"}
+                    _hover={{
+                      transform: "translateY(2px)",
+                      boxShadow: "lg",
+                    }}
+                  >
+                    Add to cart
+                  </Button>
+                </RouterLink>
 
                 <Stack
                   direction="row"
@@ -147,7 +161,6 @@ const ProductDetails = () => {
           </Container>
         </Box>
       </Flex>
-
     </>
   );
 };
